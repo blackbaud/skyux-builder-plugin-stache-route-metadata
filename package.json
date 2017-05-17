@@ -1,0 +1,31 @@
+{
+  "name": "@blackbaud/skyux-builder-plugin-stache-route-metadata",
+  "version": "0.0.1",
+  "description": "A SKY UX Builder plugin for Stache route metadata",
+  "main": "index.js",
+  "scripts": {
+    "coverage": "istanbul cover -x 'src/*.spec.js' --report=html jasmine JASMINE_CONFIG_PATH=jasmine.json",
+    "lint": "./node_modules/.bin/eslint src/**/*.js",
+    "test": "npm run lint && npm run coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blackbaud/skyux-builder-plugin-stache-route-metadata.git"
+  },
+  "author": "Blackbaud, Inc.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blackbaud/skyux-builder-plugin-stache-route-metadata/issues"
+  },
+  "homepage": "https://github.com/blackbaud/skyux-builder-plugin-stache-route-metadata#readme",
+  "dependencies": {
+    "cheerio": "0.22.0"
+  },
+  "devDependencies": {
+    "eslint": "3.19.0",
+    "eslint-plugin-standard": "3.0.1",
+    "fs-extra": "3.0.0",
+    "istanbul": "0.4.5",
+    "jasmine": "2.6.0"
+  }
+}
