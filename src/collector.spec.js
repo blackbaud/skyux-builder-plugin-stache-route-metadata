@@ -1,12 +1,11 @@
 /* node: true */
 
-const plugin = require('./collector');
-
 describe('Route Metadata Plugin > Collector', () => {
+  let plugin;
   let config;
 
   beforeEach(() => {
-    plugin.routes = [];
+    plugin = require('./collector');
 
     config = {
       runtime: {
@@ -20,6 +19,11 @@ describe('Route Metadata Plugin > Collector', () => {
         ]
       }
     };
+  });
+
+  afterEach(() => {
+    plugin.routes = [];
+    delete require.cache[require.resolve('./collector')]
   });
 
   it('should contain a preload hook', () => {
