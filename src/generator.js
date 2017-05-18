@@ -13,7 +13,9 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class StacheRouteMetadataService {
+  /* tslint:disable */
   public routes: any[] = ${JSON.stringify(routes)};
+  /* tslint:enable */
 }
 `;
   }
