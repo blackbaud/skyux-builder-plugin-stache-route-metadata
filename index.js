@@ -1,4 +1,4 @@
 module.exports = {
-  generate: require('./src/generate'),
-  prepare: require('./src/prepare'),
+  collector: require('./src/collector'),
+  generator: require('./src/generator')
 };
