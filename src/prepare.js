@@ -19,16 +19,18 @@ module.exports = {
       wrappers.each(function () {
         let name = $(this).attr('pageTitle');
 
-        skyPagesConfig.runtime.routes.forEach(route => {
-          let match = ['src/app', route.routePath, 'index.html'].join('/');
+        if (name) {
+          skyPagesConfig.runtime.routes.forEach(route => {
+            let match = ['src/app', route.routePath, 'index.html'].join('/');
 
-          if (resourcePath.endsWith(match)) {
-            collection.routes.push({
-              path: route.routePath,
-              name: name
-            });
-          }
-        });
+            if (resourcePath.endsWith(match)) {
+              collection.routes.push({
+                path: route.routePath,
+                name: name
+              });
+            }
+          });
+        }
       });
     }
 
