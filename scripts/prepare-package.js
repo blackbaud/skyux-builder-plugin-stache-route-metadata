@@ -13,7 +13,15 @@ function createDist() {
     fs.mkdirSync(distPath);
   }
 
-  fs.copySync(path.join(rootPath, 'src', 'code-block.js'), path.join(distPath, 'index.js'));
+  fs.copySync(path.join(rootPath, 'src', 'collector.js'), path.join(distPath, 'collector.js'));
+  fs.copySync(path.join(rootPath, 'src', 'generator.js'), path.join(distPath, 'generator.js'));
+  fs.writeFileSync(path.join(distPath, 'index.js'),
+`
+module.exports = {
+  collector: require('./collector'),
+  generator: require('./generator')
+};
+`);
 }
 
 function makePackageFileForDist() {
