@@ -4,7 +4,7 @@ const preload = (content, resourcePath) => {
   if (resourcePath.match(/route-metadata\.service\.ts$/)) {
     let routes = collector.routes;
 
-    if (!routes || !routes.pop) {
+    if (!Array.isArray(routes)) {
       routes = [];
     }
 
