@@ -36,14 +36,14 @@ describe('Route Metadata Plugin > Generator', () => {
 
   it('should generate the contents of the route-metadata.service.ts file', () => {
     const content = '';
-    const path = 'route-metadata.service.ts';
+    const path = 'src/app/public/src/modules/shared/route-metadata.service.ts';
     const result = plugin.preload(content, path);
     expect(result).toContain('export class StacheRouteMetadataService {');
   });
 
   it('should add the routes from Collector to the route-metadata.service.ts file', () => {
     const content = '';
-    const path = 'route-metadata.service.ts';
+    const path = 'src/app/public/src/modules/shared/route-metadata.service.ts';
     const result = plugin.preload(content, path);
     expect(result).toContain('public routes: any[] = [{"name":"Sample","path":"/"}];');
   });
@@ -57,7 +57,7 @@ describe('Route Metadata Plugin > Generator', () => {
     plugin = mock.reRequire('./generator');
 
     const content = '';
-    const path = 'route-metadata.service.ts';
+    const path = 'src/app/public/src/modules/shared/route-metadata.service.ts';
     const result = plugin.preload(content, path);
     expect(result).toContain('public routes: any[] = [];');
   });
