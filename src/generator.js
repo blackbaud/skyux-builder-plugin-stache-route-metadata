@@ -8,14 +8,16 @@ const preload = (content, resourcePath) => {
       routes = [];
     }
 
+    // (Disabling TSLint for the `routes` line because the file contents does not conform
+    // to linting rules.)
     return `
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class StacheRouteMetadataService {
-  /* tslint:disable */
+  /* tslint:disable:quotemark whitespace */
   public routes: any[] = ${JSON.stringify(routes)};
-  /* tslint:enable */
+  /* tslint:enable:quotemark whitespace */
 }
 `;
   }
