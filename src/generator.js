@@ -15,9 +15,9 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class StacheRouteMetadataService {
-  /* tslint:disable:quotemark whitespace */
+  /* tslint:disable:quotemark whitespace max-line-length */
   public routes: any[] = ${JSON.stringify(routes)};
-  /* tslint:enable:quotemark whitespace */
+  /* tslint:enable:quotemark whitespace max-line-length */
 }
 `;
   }
