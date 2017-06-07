@@ -71,4 +71,11 @@ describe('Route Metadata Plugin > Collector', () => {
     plugin.preload(content, path, config);
     expect(plugin.routes.length).toBe(0);
   });
+
+  it('should not affect files if routes are not defined', () => {
+    const content = '<stache pageTitle="My Page"></stache>';
+    const path = '/src/app/learn/index.html';
+    let result = plugin.preload(content, path, { runtime: { } });
+    expect(result).toBe(content);
+  });
 });
