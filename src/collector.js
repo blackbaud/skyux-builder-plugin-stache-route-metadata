@@ -7,6 +7,10 @@ const preload = (content, resourcePath, skyPagesConfig) => {
     return content;
   }
 
+  if (!skyPagesConfig.runtime.routes) {
+    return content;
+  }
+
   const $ = cheerio.load(content, {
     lowerCaseTags: false,
     lowerCaseAttributeNames: false,
