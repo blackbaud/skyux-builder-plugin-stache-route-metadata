@@ -1,6 +1,6 @@
 {
   "name": "@blackbaud/skyux-builder-plugin-stache-route-metadata",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A SKY UX Builder plugin for Stache route metadata",
   "main": "index.js",
   "scripts": {
