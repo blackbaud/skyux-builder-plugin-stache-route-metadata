@@ -15,18 +15,19 @@ const preload = (content, resourcePath) => {
     moduleDirectory = './public';
   }
 
-  return `
+  return `${content}
 import {
-  STACHE_ROUTE_METADATA_SERVICE_CONFIG_TOKEN,
-  STACHE_ROUTE_METADATA_PROVIDERS
+  StacheRouteMetadataService,
+  STACHE_ROUTE_METADATA_SERVICE_CONFIG
 } from '${moduleDirectory}';
 
-STACHE_ROUTE_METADATA_PROVIDERS.push({
-  provide: STACHE_ROUTE_METADATA_SERVICE_CONFIG_TOKEN,
-  useValue: ${JSON.stringify(routes)}
-});
-
-${content}`;
+STACHE_EXTRAS_PROVIDERS.push(
+  { provide: STACHE_ROUTE_METADATA_SERVICE_CONFIG, useValue: ${JSON.stringify(routes)} }
+);
+STACHE_EXTRAS_PROVIDERS.push(
+  { provide: StacheRouteMetadataService, useClass: StacheRouteMetadataService }
+);
+`;
 };
 
 module.exports = { preload };
