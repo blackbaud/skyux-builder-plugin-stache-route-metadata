@@ -1,30 +1,36 @@
-let collector = require('./collector');
+const collector = require('./collector');
 
 const preload = (content, resourcePath) => {
-  if (resourcePath.match(/public\/src\/modules\/shared\/route-metadata\.service\.ts$/)) {
-    let routes = collector.routes;
-
-    if (!Array.isArray(routes)) {
-      routes = [];
-    }
-
-    // (Disabling TSLint for the `routes` line because the file contents does not conform
-    // to linting rules.)
-    return `
-import { Injectable } from '@angular/core';
-
-@Injectable()
-export class StacheRouteMetadataService {
-  /* tslint:disable:quotemark whitespace max-line-length */
-  public routes: any[] = ${JSON.stringify(routes)};
-  /* tslint:enable:quotemark whitespace max-line-length */
-}
-`;
+  if (!resourcePath.match(/app-extras\.module\.ts$/)) {
+    return content;
   }
+
+  let routes = collector.routes;
+  if (!Array.isArray(routes)) {
+    routes = [];
+  }
+
+  let moduleDirectory = '@blackbaud/stache';
+  if (resourcePath.match('/stache2/')) {
+    moduleDirectory = './public';
+  }
+
+  content = `
+import {
+  StacheRouteMetadataService,
+  STACHE_ROUTE_METADATA_SERVICE_CONFIG
+} from '${moduleDirectory}';
+
+export const STACHE_ROUTE_METADATA_PROVIDERS: any[] = [
+  { provide: STACHE_ROUTE_METADATA_SERVICE_CONFIG, useValue: ${JSON.stringify(routes)} },
+  { provide: StacheRouteMetadataService, useClass: StacheRouteMetadataService }
+];
+${content}`;
+
+  content = content.replace('providers: [', `providers: [
+    STACHE_ROUTE_METADATA_PROVIDERS,`);
 
   return content;
 };
 
-module.exports = {
-  preload
-};
+module.exports = { preload };
