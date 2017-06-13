@@ -15,19 +15,21 @@ const preload = (content, resourcePath) => {
     moduleDirectory = './public';
   }
 
-  return `${content}
+  content = `
 import {
   StacheRouteMetadataService,
   STACHE_ROUTE_METADATA_SERVICE_CONFIG
 } from '${moduleDirectory}';
 
-STACHE_EXTRAS_PROVIDERS.push(
-  { provide: STACHE_ROUTE_METADATA_SERVICE_CONFIG, useValue: ${JSON.stringify(routes)} }
-);
-STACHE_EXTRAS_PROVIDERS.push(
+export const STACHE_METADATA_PROVIDERS: any[] = [
+  { provide: STACHE_ROUTE_METADATA_SERVICE_CONFIG, useValue: ${JSON.stringify(routes)} },
   { provide: StacheRouteMetadataService, useClass: StacheRouteMetadataService }
-);
-`;
+];`;
+
+  content = content.replace('providers: [', `providers: [
+    STACHE_METADATA_PROVIDERS,`);
+
+  return content;
 };
 
 module.exports = { preload };
