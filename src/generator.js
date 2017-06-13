@@ -1,4 +1,4 @@
-let collector = require('./collector');
+const collector = require('./collector');
 
 const preload = (content, resourcePath) => {
   if (!resourcePath.match(/app-extras\.module\.ts$/)) {
@@ -24,7 +24,8 @@ import {
 export const STACHE_ROUTE_METADATA_PROVIDERS: any[] = [
   { provide: STACHE_ROUTE_METADATA_SERVICE_CONFIG, useValue: ${JSON.stringify(routes)} },
   { provide: StacheRouteMetadataService, useClass: StacheRouteMetadataService }
-];`;
+];
+${content}`;
 
   content = content.replace('providers: [', `providers: [
     STACHE_ROUTE_METADATA_PROVIDERS,`);
