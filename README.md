@@ -1,7 +1,9 @@
-# Stache Route Metadata Plugin
+# Stache Route Metadata Plugin (Deprecated)
 
 [![npm](https://img.shields.io/npm/v/@blackbaud/skyux-builder-plugin-stache-route-metadata.svg)](https://www.npmjs.com/package/@blackbaud/skyux-builder-plugin-stache-route-metadata)
 [![status](https://travis-ci.org/blackbaud/skyux-builder-plugin-stache-route-metadata.svg?branch=master)](https://travis-ci.org/blackbaud/skyux-builder-plugin-stache-route-metadata)
+
+### NOTE: This plugin has been deprecated in favor of an [all-inclusive plugin](https://github.com/blackbaud/skyux-builder-plugin-stache).
 
 This [SKY UX Builder](https://github.com/blackbaud/skyux-builder) plugin allows consumers to provide metadata for page routes, such as its title and order. This plugin is intended to be used with [Stache 2 Components](https://github.com/blackbaud/stache2).
 
